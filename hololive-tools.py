@@ -48,7 +48,7 @@ def process_cards(soup, associations):
         for card in cards_by_rarity:
             card_id = card.find("span", recursive=False).text.strip()
             card_name = card.find("h4").text.strip()
-            card_price = card.find("strong").text.strip()
+            card_price = int(card.find("strong").text.strip().replace("円", "").replace(",", ""))
             card_url = card.find("a")["href"]
             card_group, oshi_name = 'Unknown', 'None'
 
